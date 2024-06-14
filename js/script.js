@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
     box1.className = 'box';
     const figure = document.createElement('figure');
     const aLogo = document.createElement('a');
-    aLogo.href = '#';
+    aLogo.href = '../index.html';
     const imgLogo = document.createElement('img');
     imgLogo.src = './img/logo.png';
     imgLogo.alt = 'logo de footer';
@@ -437,11 +437,19 @@ document.addEventListener('DOMContentLoaded', () => {
     h2Siguenos.textContent = 'SIGUENOS';
     const redSocial = document.createElement('div');
     redSocial.className = 'red-social';
-    const socialMedia = ['facebook', 'instagram', 'twitter', 'whatsapp'];
+    
+    const socialMedia = [
+        {name:'whatsapp', URL:'https://web.whatsapp.com/'},
+        {name:'facebook', URL:'https://www.facebook.com/?locale=es_LA'},
+        {name:'twitter', URL:'https://x.com/home?lang=es'},
+        {name:'instagram', URL:'https://www.instagram.com/'},
+
+    ];
     socialMedia.forEach(media => {
         const a = document.createElement('a');
-        a.href = '#';
-        a.className = `fa fa-${media}`;
+        a.href = `${media.URL}`;
+        a.target="_blank"
+        a.className = `fa fa-${media.name} `;
         redSocial.appendChild(a);
     });
     box3.appendChild(h2Siguenos);

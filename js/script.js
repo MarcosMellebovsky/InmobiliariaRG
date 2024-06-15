@@ -8,23 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
         app.appendChild(header);
     }
 
-
-
     // NAVEGADOR
     function renderNav() {
         const nav = document.createElement('nav');
-        const hamburgerMenu = document.createElement('div');
+     
         
-        hamburgerMenu.className = 'hamburger-menu';
-        hamburgerMenu.innerHTML = `
-            <div></div>
-            <div></div>
-            <div></div>
-        `;
-        hamburgerMenu.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    
         const navMenu = document.createElement('div');
         navMenu.className = 'nav-menu';
     
@@ -60,13 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         const themeCheckbox = themeSwitch.querySelector('.input');
+
         themeCheckbox.addEventListener('change', function() {
             document.body.classList.toggle('dark-theme', this.checked);
             // Guardar el estado del tema en localStorage
             localStorage.setItem('theme', this.checked ? 'dark' : 'light');
         });
 
-        // Verificar el tema guardado en localStorage al cargar la página
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.body.classList.add('dark-theme');
@@ -82,15 +70,102 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.appendChild(contactButton);
         navMenu.appendChild(themeSwitch); 
     
-        nav.appendChild(hamburgerMenu);
+        
         nav.appendChild(navMenu);
         app.appendChild(nav);
     }
 
 
+// FOOTER
+    function RenderFooter() {
+    const footer = document.createElement('footer');
+    footer.className = 'pie-pagina';
+
+    const grupo1 = document.createElement('div');
+    grupo1.className = 'grupo-1';
+
+    const box1 = document.createElement('div');
+    box1.className = 'box';
+    const figure = document.createElement('figure');
+    const aLogo = document.createElement('a');
+    aLogo.href = '../index.html';
+    const imgLogo = document.createElement('img');
+    imgLogo.src = './img/logo.png';
+    imgLogo.alt = 'logo de footer';
+    aLogo.appendChild(imgLogo);
+    figure.appendChild(aLogo);
+    box1.appendChild(figure);
+    grupo1.appendChild(box1);
+
+    const box2 = document.createElement('div');
+    box2.className = 'box';
+    const h2SobreNosotros = document.createElement('h2');
+    h2SobreNosotros.textContent = 'SOBRE NOSOTROS';
+    const p1 = document.createElement('p');
+    p1.textContent = 'Somos una inmobiliaria comprometida en ofrecer las mejores propiedades a nuestros clientes.';
+    const p2 = document.createElement('p');
+    p2.textContent = 'Nuestra misión es ayudar a las personas a encontrar la casa de sus sueños.';
+    box2.appendChild(h2SobreNosotros);
+    box2.appendChild(p1);
+    box2.appendChild(p2);
+    grupo1.appendChild(box2);
+
+    const box3 = document.createElement('div');
+    box3.className = 'box';
+    const h2Siguenos = document.createElement('h2');
+    h2Siguenos.textContent = 'SIGUENOS';
+    const redSocial = document.createElement('div');
+    redSocial.className = 'red-social';
+    
+    const socialMedia = [
+        {name:'whatsapp', URL:'https://web.whatsapp.com/'},
+        {name:'facebook', URL:'https://www.facebook.com/?locale=es_LA'},
+        {name:'twitter', URL:'https://x.com/home?lang=es'},
+        {name:'instagram', URL:'https://www.instagram.com/'},
+
+    ];
+    socialMedia.forEach(media => {
+        const a = document.createElement('a');
+        a.href = `${media.URL}`;
+        a.target="_blank"
+        a.className = `fa fa-${media.name} `;
+        redSocial.appendChild(a);
+    });
+    box3.appendChild(h2Siguenos);
+    box3.appendChild(redSocial);
+    grupo1.appendChild(box3);
+
+    footer.appendChild(grupo1);
+
+    const grupo2 = document.createElement('div');
+    grupo2.className = 'grupo-2';
+    const small = document.createElement('small');
+    const currentYear = new Date().getFullYear();
+    small.innerHTML = `&copy; ${currentYear} <b>InmobiliariaRG</b> Todos los derechos reservados`;
+    grupo2.appendChild(small);
+
+    footer.appendChild(grupo2);
+
+    document.getElementById('footer').appendChild(footer);
+    }
 
 
-    // seccion home
+
+
+
+
+// ---------------------------------------------Separacion - views - cuerpo HTML -------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+    // seccion view home
     function renderHome() {
         clearContainer();
         const container = document.createElement('div');
@@ -108,7 +183,20 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: 9, name: 'Casa en el desierto', price: 500000, image: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-792714990290805676/original/cfa0ed06-25c5-4f41-995f-df5d0596f48b.jpeg?im_w=1200' },
             { id: 10, name: 'Casa colonial', price: 550000, image: 'https://a0.muscache.com/im/pictures/miso/Hosting-43403945/original/02fd85af-475d-44d8-a585-c1cc9b02df7a.jpeg?im_w=1200' },
             { id: 11, name: 'Casa pequeña', price: 19500, image: 'https://a0.muscache.com/im/pictures/18ad9dfa-cc1a-4a0f-81d6-572e68368c91.jpg?im_w=1200' },
-            { id: 12, name: 'Casa con jardín', price: 40300, image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDI1fHxob3VzZSUyMGdhcmRlbmV8ZW58MHx8fHwxNjEyODU3ODY4&ixlib=rb-1.2.1&q=80&w=400' }
+            { id: 12, name: 'Casa con jardín', price: 40300, image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDI1fHxob3VzZSUyMGdhcmRlbmV8ZW58MHx8fHwxNjEyODU3ODY4&ixlib=rb-1.2.1&q=80&w=400' },
+            { id: 13, name: 'Casa en la playa', price: 300000, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fGJlYWNoJTIwaG91c2V8ZW58MHx8fHwxNjEyODU2NjUx&ixlib=rb-1.2.1&q=80&w=400' },
+            { id: 14, name: 'Casa en la ciudad', price: 500000, image: 'https://a0.muscache.com/im/pictures/hosting/Hosting-18095439/original/4eea5c77-d404-47aa-9f70-0c315659e9b4.jpeg?im_w=1200' },
+            { id: 15, name: 'Casa en el campo', price: 200000, image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fGZpZWxkfGVufDB8fHx8MTYxMjg1Njg0NA&ixlib=rb-1.2.1&q=80&w=400' },
+            { id: 16, name: 'Casa moderna', price: 450000, image: 'https://a0.muscache.com/im/pictures/miso/Hosting-1126848122961632696/original/839bcea3-2a06-4309-b604-b00da160420e.jpeg?im_w=1200' },
+            { id: 17, name: 'Casa de lujo', price: 750000, image: 'https://a0.muscache.com/im/pictures/a04eda8a-1915-48be-8d7c-041c9158afa8.jpg?im_w=1200' },
+            { id: 18, name: 'Casa rústica', price: 350000, image: 'https://a0.muscache.com/im/pictures/hosting/Hosting-1055292733238240562/original/4f1d8e18-72c8-4b0f-9821-1da87742c724.jpeg?im_w=1200' },
+            { id: 19, name: 'Casa en la montaña', price: 400000, image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fG1vdW50YWluJTIwaG91c2V8ZW58MHx8fHwxNjEyODU2ODMw&ixlib=rb-1.2.1&q=80&w=400' },
+            { id: 20, name: 'Casa en el lago', price: 600000, image: 'https://a0.muscache.com/im/pictures/e7e9e1c5-c125-48d4-9814-10bc1f373150.jpg?im_w=720' },
+            { id: 21, name: 'Casa en el desierto', price: 500000, image: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-792714990290805676/original/cfa0ed06-25c5-4f41-995f-df5d0596f48b.jpeg?im_w=1200' },
+            { id: 22, name: 'Casa colonial', price: 550000, image: 'https://a0.muscache.com/im/pictures/miso/Hosting-43403945/original/02fd85af-475d-44d8-a585-c1cc9b02df7a.jpeg?im_w=1200' },
+            { id: 23, name: 'Casa pequeña', price: 19500, image: 'https://a0.muscache.com/im/pictures/18ad9dfa-cc1a-4a0f-81d6-572e68368c91.jpg?im_w=1200' },
+            { id: 24, name: 'Casa con jardín', price: 40300, image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDI1fHxob3VzZSUyMGdhcmRlbmV8ZW58MHx8fHwxNjEyODU3ODY4&ixlib=rb-1.2.1&q=80&w=400' }
+        
         ];
 
         houses.forEach(house => {
@@ -133,8 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-    // seccion carrito
+    // seccion view carrito
     function renderCart() {
         clearContainer();
         const container = document.createElement('div');
@@ -218,46 +305,40 @@ document.addEventListener('DOMContentLoaded', () => {
     
         app.appendChild(container);
     }
-    
-    
-
-
-    // seccion contacto
-    function renderContact() {
-        clearContainer();
-        const container = document.createElement('div');
-        container.className = 'container';
-
-        const form = document.createElement('form');
-        form.innerHTML = `
-            <input type="text" id="name" placeholder="Nombre" required class="form-control">
-            <input type="email" id="email" placeholder="Correo Electrónico" required class="form-control">
-            <textarea id="message" placeholder="Mensaje" required class="form-control textarea"></textarea>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        `;
-        form.addEventListener('submit', handleContactSubmit);
-
-        container.appendChild(form);
-        app.appendChild(container);
+    function addToCart(house) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(house);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        Swal.fire({
+            title: `${house.name} 
+            se agrego al carrito!`,
+            icon: 'success',
+            confirmButtonText: 'Volver',
+            footer: '<span class="rojo"> Esta  informacion es importante!</span>',
+            timer: 10000,
+            timerProgressBar: true,
+            allowOutsideClick: false,
+            allowEscapeKey: true,
+            allowEnterKey: true,
+            stopKeydownPropagation: false,
+            
+        });
+     
     }
-   
-
-    function clearForm() {
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('message').value = '';
-    }
+    
 
 
-    // seccion about 
-    function renderAbout() {
+
+
+ // seccion about 
+     function renderAbout() {
         clearContainer();
         const container = document.createElement('div');
         container.className = 'container';
     
         container.innerHTML = `
             <section id="about-intro">
-                <h2>Sobre Nosotros</h2>
+                <h3>Sobre Nosotros</h3>
                 <p>Somos una inmobiliaria comprometida en ofrecer las mejores propiedades a nuestros clientes.</p>
                 <p>Nuestra misión es ayudar a las personas a encontrar la casa de sus sueños.</p>
                 <p>Con años de experiencia en el mercado, garantizamos un servicio de calidad y transparencia.</p>
@@ -295,10 +376,48 @@ document.addEventListener('DOMContentLoaded', () => {
     
         app.appendChild(container);
     }
+
+
+
+
+
+    // seccion view contacto
+    function renderContact() {
+        clearContainer();
+        
+        const container2 = document.createElement('div');
+        container2.className = 'container';
     
-
-
-
+        const h1 = document.createElement('h1');
+        h1.className = 'h1-contact';
+        h1.innerHTML = 'Contactanos';
+    
+        const divPadre = document.createElement('div');
+        divPadre.className = 'div-padre';
+    
+        const form = document.createElement('form');
+        form.className = 'form-form';
+        form.innerHTML = `
+            <input type="text" id="name" placeholder="Nombre" required class="form-control">
+            <input type="email" id="email" placeholder="Correo Electrónico" required class="form-control">
+            <textarea id="message" placeholder="Mensaje" required class="form-control textarea"></textarea>
+            <div class="div-btn-form">
+                <button type="submit" class="btn-form btn-primary">Enviar</button>
+            </div>
+        `;
+        form.addEventListener('submit', handleContactSubmit);
+    
+        divPadre.appendChild(h1);
+        divPadre.appendChild(form);
+        container2.appendChild(divPadre);
+        app.appendChild(container2);
+    }
+    
+    function clearForm() {
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+    }
     function handleContactSubmit(event) {
         
         const name = document.getElementById('name').value;
@@ -323,46 +442,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Limpia el formulario después de enviarlo
         clearForm();
     }
-    function handlePagar(cart) {
-        
-        Swal.fire({
-            title: "Gracias por su compra! ",
-            icon: 'success',
-            confirmButtonText: 'Volver',
-            footer: '<span class="rojo"> Esta  informacion es importante!</span>',
-            timer: 10000,
-            timerProgressBar: true,
-            allowOutsideClick: false,
-            allowEscapeKey: true,
-            allowEnterKey: true,
-            stopKeydownPropagation: false,
-            
-        });
-    
-        
-        localStorage.removeItem('cart');
-        renderCart(); 
-    }
-    function addToCart(house) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(house);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        Swal.fire({
-            title: `${house.name} 
-            se agrego al carrito!`,
-            icon: 'success',
-            confirmButtonText: 'Volver',
-            footer: '<span class="rojo"> Esta  informacion es importante!</span>',
-            timer: 10000,
-            timerProgressBar: true,
-            allowOutsideClick: false,
-            allowEscapeKey: true,
-            allowEnterKey: true,
-            stopKeydownPropagation: false,
-            
-        });
-     
-    }
     function removeFromCart(house) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart = cart.filter(item => item.id !== house.id);
@@ -385,6 +464,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+
     function clearContainer() {
         const container = document.querySelector('.container');
         if (container) {
@@ -394,89 +475,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-  // FOOTER
-    function RenderFooter() {
-    const footer = document.createElement('footer');
-    footer.className = 'pie-pagina';
-
-    const grupo1 = document.createElement('div');
-    grupo1.className = 'grupo-1';
-
-    const box1 = document.createElement('div');
-    box1.className = 'box';
-    const figure = document.createElement('figure');
-    const aLogo = document.createElement('a');
-    aLogo.href = '../index.html';
-    const imgLogo = document.createElement('img');
-    imgLogo.src = './img/logo.png';
-    imgLogo.alt = 'logo de footer';
-    aLogo.appendChild(imgLogo);
-    figure.appendChild(aLogo);
-    box1.appendChild(figure);
-    grupo1.appendChild(box1);
-
-    const box2 = document.createElement('div');
-    box2.className = 'box';
-    const h2SobreNosotros = document.createElement('h2');
-    h2SobreNosotros.textContent = 'SOBRE NOSOTROS';
-    const p1 = document.createElement('p');
-    p1.textContent = 'Somos una inmobiliaria comprometida en ofrecer las mejores propiedades a nuestros clientes.';
-    const p2 = document.createElement('p');
-    p2.textContent = 'Nuestra misión es ayudar a las personas a encontrar la casa de sus sueños.';
-    box2.appendChild(h2SobreNosotros);
-    box2.appendChild(p1);
-    box2.appendChild(p2);
-    grupo1.appendChild(box2);
-
-    const box3 = document.createElement('div');
-    box3.className = 'box';
-    const h2Siguenos = document.createElement('h2');
-    h2Siguenos.textContent = 'SIGUENOS';
-    const redSocial = document.createElement('div');
-    redSocial.className = 'red-social';
     
-    const socialMedia = [
-        {name:'whatsapp', URL:'https://web.whatsapp.com/'},
-        {name:'facebook', URL:'https://www.facebook.com/?locale=es_LA'},
-        {name:'twitter', URL:'https://x.com/home?lang=es'},
-        {name:'instagram', URL:'https://www.instagram.com/'},
-
-    ];
-    socialMedia.forEach(media => {
-        const a = document.createElement('a');
-        a.href = `${media.URL}`;
-        a.target="_blank"
-        a.className = `fa fa-${media.name} `;
-        redSocial.appendChild(a);
-    });
-    box3.appendChild(h2Siguenos);
-    box3.appendChild(redSocial);
-    grupo1.appendChild(box3);
-
-    footer.appendChild(grupo1);
-
-    const grupo2 = document.createElement('div');
-    grupo2.className = 'grupo-2';
-    const small = document.createElement('small');
-    const currentYear = new Date().getFullYear();
-    small.innerHTML = `&copy; ${currentYear} <b>InmobiliariaRG</b> Todos los derechos reservados`;
-    grupo2.appendChild(small);
-
-    footer.appendChild(grupo2);
-
-    document.getElementById('footer').appendChild(footer);
-    }
-
-
-
-
 
 
    // Aqui corro la app
-
     renderHeader();
     renderNav();
     renderHome(); 

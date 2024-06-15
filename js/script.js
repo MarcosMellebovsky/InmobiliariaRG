@@ -349,12 +349,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Contamos con un equipo profesional y dedicado que trabaja para satisfacer las necesidades de nuestros clientes.</p>
                 <div class="team-members">
                     <div class="team-member">
-                        <img src="../img/persona2.png" alt="Miembro del equipo">
+                        <img src="./img/persona2.png" alt="Miembro del equipo">
                         <h4>John Doe</h4>
                         <p>Agente inmobiliario con más de 10 años de experiencia en el mercado.</p>
                     </div>
                     <div class="team-member">
-                        <img src="../img/persona.png" alt="Miembro del equipo">
+                        <img src="./img/persona.png" alt="Miembro del equipo">
                         <h4>Jane Smith</h4>
                         <p>Especialista en ventas y atención al cliente, comprometida con la satisfacción total.</p>
                     </div>

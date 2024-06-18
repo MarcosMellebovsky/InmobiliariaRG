@@ -305,6 +305,33 @@ document.addEventListener('DOMContentLoaded', () => {
     
         app.appendChild(container);
     }
+    function handlePagar() {
+        Swal.fire({
+            title: 'Procesando pago...',
+            text: 'Por favor, espera mientras procesamos tu pago.',
+            icon: 'info',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            onBeforeOpen: () => {
+                Swal.showLoading();
+            }
+        }).then(() => {
+            localStorage.removeItem('cart');
+            
+            Swal.fire({
+                title: 'Pago realizado!',
+                text: 'Gracias por tu compra.',
+                icon: 'success',
+                confirmButtonText: 'Cerrar'
+            }).then(() => {
+                renderCart();
+            });
+        });
+    }
     function addToCart(house) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.push(house);

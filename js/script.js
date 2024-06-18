@@ -306,14 +306,14 @@ document.addEventListener('DOMContentLoaded', () => {
         app.appendChild(container);
     }
     function handlePagar(houses) {
-        let title = `Estas seguro de comprar ${houses.length} casa${houses.length > 1 ? 's' : ''}!`;
-        
+        let title = `¡Estas seguro de comprar ${houses.length} casa${houses.length > 1 ? 's' : ''}!`;
+    
         Swal.fire({
             title: title,
             text: "¡No podrás revertir esto!",
             icon: "warning",
             showCancelButton: true,
-            cancelButtonText:"Cancelar",
+            cancelButtonText: "Cancelar",
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Comprar!",
@@ -323,21 +323,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 localStorage.removeItem('cart');
+    
+                const houseNames = houses.map(house => house.name).join(", ");
+                
+    
                 Swal.fire({
-                    title: "¡Eliminado!",
-                    text: "Su casa ha sido eliminada.",
+                    title: "¡Comprado!",
+                    text: `Compraste ${houseNames}`,
                     icon: "success"
                 });
+    
                 renderCart();
             } else {
                 Swal.fire({
-                    title: "Pago cancelado!",
+                    title: "¡Pago cancelado!",
                     text: "Tu compra fue cancelada.",
                     icon: "error"
                 });
             }
         });
     }
+    
     
     function addToCart(house) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];

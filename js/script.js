@@ -305,33 +305,40 @@ document.addEventListener('DOMContentLoaded', () => {
     
         app.appendChild(container);
     }
-    function handlePagar() {
+    function handlePagar(houses) {
+        let title = `Estas seguro de comprar ${houses.length} casa${houses.length > 1 ? 's' : ''}!`;
+        
         Swal.fire({
-            title: 'Procesando pago...',
-            text: 'Por favor, espera mientras procesamos tu pago.',
-            icon: 'info',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            allowEnterKey: false,
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
+            title: title,
+            text: "¡No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText:"Cancelar",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Comprar!",
             onBeforeOpen: () => {
                 Swal.showLoading();
             }
-        }).then(() => {
-            localStorage.removeItem('cart');
-            
-            Swal.fire({
-                title: 'Pago realizado!',
-                text: 'Gracias por tu compra.',
-                icon: 'success',
-                confirmButtonText: 'Cerrar'
-            }).then(() => {
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('cart');
+                Swal.fire({
+                    title: "¡Eliminado!",
+                    text: "Su casa ha sido eliminada.",
+                    icon: "success"
+                });
                 renderCart();
-            });
+            } else {
+                Swal.fire({
+                    title: "Pago cancelado!",
+                    text: "Tu compra fue cancelada.",
+                    icon: "error"
+                });
+            }
         });
     }
+    
     function addToCart(house) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.push(house);

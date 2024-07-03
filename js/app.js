@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('footer').appendChild(footer);
     }
 
-
+   
 
 
 
@@ -166,59 +166,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // seccion view home
-    function renderHome() {
+    async function renderHome() {
         clearContainer();
         const container = document.createElement('div');
         container.className = 'container';
-
-        const houses = [
-            { id: 1, name: 'Casa en la playa', price: 300000, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fGJlYWNoJTIwaG91c2V8ZW58MHx8fHwxNjEyODU2NjUx&ixlib=rb-1.2.1&q=80&w=400' },
-            { id: 2, name: 'Casa en la ciudad', price: 500000, image: 'https://a0.muscache.com/im/pictures/hosting/Hosting-18095439/original/4eea5c77-d404-47aa-9f70-0c315659e9b4.jpeg?im_w=1200' },
-            { id: 3, name: 'Casa en el campo', price: 200000, image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fGZpZWxkfGVufDB8fHx8MTYxMjg1Njg0NA&ixlib=rb-1.2.1&q=80&w=400' },
-            { id: 4, name: 'Casa moderna', price: 450000, image: 'https://a0.muscache.com/im/pictures/miso/Hosting-1126848122961632696/original/839bcea3-2a06-4309-b604-b00da160420e.jpeg?im_w=1200' },
-            { id: 5, name: 'Casa de lujo', price: 750000, image: 'https://a0.muscache.com/im/pictures/a04eda8a-1915-48be-8d7c-041c9158afa8.jpg?im_w=1200' },
-            { id: 6, name: 'Casa rústica', price: 350000, image: 'https://a0.muscache.com/im/pictures/hosting/Hosting-1055292733238240562/original/4f1d8e18-72c8-4b0f-9821-1da87742c724.jpeg?im_w=1200' },
-            { id: 7, name: 'Casa en la montaña', price: 400000, image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fG1vdW50YWluJTIwaG91c2V8ZW58MHx8fHwxNjEyODU2ODMw&ixlib=rb-1.2.1&q=80&w=400' },
-            { id: 8, name: 'Casa en el lago', price: 600000, image: 'https://a0.muscache.com/im/pictures/e7e9e1c5-c125-48d4-9814-10bc1f373150.jpg?im_w=720' },
-            { id: 9, name: 'Casa en el desierto', price: 500000, image: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-792714990290805676/original/cfa0ed06-25c5-4f41-995f-df5d0596f48b.jpeg?im_w=1200' },
-            { id: 10, name: 'Casa colonial', price: 550000, image: 'https://a0.muscache.com/im/pictures/miso/Hosting-43403945/original/02fd85af-475d-44d8-a585-c1cc9b02df7a.jpeg?im_w=1200' },
-            { id: 11, name: 'Casa pequeña', price: 19500, image: 'https://a0.muscache.com/im/pictures/18ad9dfa-cc1a-4a0f-81d6-572e68368c91.jpg?im_w=1200' },
-            { id: 12, name: 'Casa con jardín', price: 40300, image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDI1fHxob3VzZSUyMGdhcmRlbmV8ZW58MHx8fHwxNjEyODU3ODY4&ixlib=rb-1.2.1&q=80&w=400' },
-            { id: 13, name: 'Casa en la playa', price: 300000, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fGJlYWNoJTIwaG91c2V8ZW58MHx8fHwxNjEyODU2NjUx&ixlib=rb-1.2.1&q=80&w=400' },
-            { id: 14, name: 'Casa en la ciudad', price: 500000, image: 'https://a0.muscache.com/im/pictures/hosting/Hosting-18095439/original/4eea5c77-d404-47aa-9f70-0c315659e9b4.jpeg?im_w=1200' },
-            { id: 15, name: 'Casa en el campo', price: 200000, image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fGZpZWxkfGVufDB8fHx8MTYxMjg1Njg0NA&ixlib=rb-1.2.1&q=80&w=400' },
-            { id: 16, name: 'Casa moderna', price: 450000, image: 'https://a0.muscache.com/im/pictures/miso/Hosting-1126848122961632696/original/839bcea3-2a06-4309-b604-b00da160420e.jpeg?im_w=1200' },
-            { id: 17, name: 'Casa de lujo', price: 750000, image: 'https://a0.muscache.com/im/pictures/a04eda8a-1915-48be-8d7c-041c9158afa8.jpg?im_w=1200' },
-            { id: 18, name: 'Casa rústica', price: 350000, image: 'https://a0.muscache.com/im/pictures/hosting/Hosting-1055292733238240562/original/4f1d8e18-72c8-4b0f-9821-1da87742c724.jpeg?im_w=1200' },
-            { id: 19, name: 'Casa en la montaña', price: 400000, image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fG1vdW50YWluJTIwaG91c2V8ZW58MHx8fHwxNjEyODU2ODMw&ixlib=rb-1.2.1&q=80&w=400' },
-            { id: 20, name: 'Casa en el lago', price: 600000, image: 'https://a0.muscache.com/im/pictures/e7e9e1c5-c125-48d4-9814-10bc1f373150.jpg?im_w=720' },
-            { id: 21, name: 'Casa en el desierto', price: 500000, image: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-792714990290805676/original/cfa0ed06-25c5-4f41-995f-df5d0596f48b.jpeg?im_w=1200' },
-            { id: 22, name: 'Casa colonial', price: 550000, image: 'https://a0.muscache.com/im/pictures/miso/Hosting-43403945/original/02fd85af-475d-44d8-a585-c1cc9b02df7a.jpeg?im_w=1200' },
-            { id: 23, name: 'Casa pequeña', price: 19500, image: 'https://a0.muscache.com/im/pictures/18ad9dfa-cc1a-4a0f-81d6-572e68368c91.jpg?im_w=1200' },
-            { id: 24, name: 'Casa con jardín', price: 40300, image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDI1fHxob3VzZSUyMGdhcmRlbmV8ZW58MHx8fHwxNjEyODU3ODY4&ixlib=rb-1.2.1&q=80&w=400' }
-        
-        ];
-
-        houses.forEach(house => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-                <img src="${house.image}" alt="${house.name}">
-                <h3 class="h3-card" >${house.name}</h3>
-                <p class="p-card" >Precio: $${house.price}</p>
-
-                <div class="boton-div">
-                    <button data-id="${house.id}" class="btn btn-primary botonn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/> </svg> Agregar al carrito</button>
-                </div>
-                
-            `;
-            card.querySelector('button').addEventListener('click', () => addToCart(house));
-            container.appendChild(card);
-        });
-
-        app.appendChild(container);
+    
+        try {
+            const response = await fetch('/houses.json');
+            const houses = await response.json();
+    
+            houses.forEach(house => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${house.image}" alt="${house.name}">
+                    <h3 class="h3-card">${house.name}</h3>
+                    <p class="p-card">Precio: $${house.price}</p>
+    
+                    <div class="boton-div">
+                        <button data-id="${house.id}" class="btn btn-primary botonn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                            </svg>
+                            Agregar al carrito
+                        </button>
+                    </div>
+                `;
+                card.querySelector('button').addEventListener('click', () => addToCart(house));
+                container.appendChild(card);
+            });
+    
+            app.appendChild(container);
+        } catch (error) {
+            console.error('Error fetching houses:', error);
+        }
     }
-
 
 
     // seccion view carrito
@@ -275,7 +257,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 removeButton.className = 'btn-carrito btn-danger';
                 removeButton.addEventListener('click', () => removeFromCart(item));
     
-                // Creación del icono de eliminar (SVG)
                 const trashIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
                 trashIcon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
                 trashIcon.setAttribute('width', '16');
@@ -423,51 +404,117 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
  // seccion about 
-     function renderAbout() {
-        clearContainer();
+
+function fetchData() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({
+                about: {
+                    intro: {
+                        title: "Sobre Nosotros",
+                        content: [
+                            "Somos una inmobiliaria comprometida en ofrecer las mejores propiedades a nuestros clientes.",
+                            "Nuestra misión es ayudar a las personas a encontrar la casa de sus sueños.",
+                            "Con años de experiencia en el mercado, garantizamos un servicio de calidad y transparencia."
+                        ]
+                    },
+                    team: {
+                        title: "Nuestro Equipo",
+                        content: "Contamos con un equipo profesional y dedicado que trabaja para satisfacer las necesidades de nuestros clientes.",
+                        members: [
+                            {
+                                img: "./img/persona2.png",
+                                name: "John Doe",
+                                role: "Agente inmobiliario con más de 10 años de experiencia en el mercado."
+                            },
+                            {
+                                img: "./img/persona.png",
+                                name: "Jane Smith",
+                                role: "Especialista en ventas y atención al cliente, comprometida con la satisfacción total."
+                            }
+                        ]
+                    },
+                    whyChooseUs: {
+                        title: "¿Por qué Elegirnos?",
+                        reasons: [
+                            "Amplia experiencia en el mercado inmobiliario.",
+                            "Compromiso con la satisfacción del cliente.",
+                            "Variedad de propiedades para todos los gustos y presupuestos.",
+                            "Transparencia y profesionalismo en cada transacción."
+                        ]
+                    }
+                }
+            });
+        }); 
+    });
+}
+
+// Función para cargar imágenes de forma asíncrona
+function loadImages(members) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            const images = members.map(member => `
+                <div class="team-member">
+                    <img src="${member.img}" alt="Miembro del equipo">
+                    <h4>${member.name}</h4>
+                    <p>${member.role}</p>
+                </div>
+            `).join('');
+            resolve(images);
+        }, 1000);
+    });
+}
+
+async function renderAbout() {
+    clearContainer();
+    
+    try {
+        const data = await fetchData();
         const container = document.createElement('div');
         container.className = 'container';
-    
+
         container.innerHTML = `
             <section id="about-intro">
-                <h3>Sobre Nosotros</h3>
-                <p>Somos una inmobiliaria comprometida en ofrecer las mejores propiedades a nuestros clientes.</p>
-                <p>Nuestra misión es ayudar a las personas a encontrar la casa de sus sueños.</p>
-                <p>Con años de experiencia en el mercado, garantizamos un servicio de calidad y transparencia.</p>
+                <h3>${data.about.intro.title}</h3>
+                ${data.about.intro.content.map(paragraph => `<p>${paragraph}</p>`).join('')}
             </section>
             
             <section id="our-team">
-                <h3>Nuestro Equipo</h3>
-                <p>Contamos con un equipo profesional y dedicado que trabaja para satisfacer las necesidades de nuestros clientes.</p>
-                <div class="team-members">
-                    <div class="team-member">
-                        <img src="./img/persona2.png" alt="Miembro del equipo">
-                        <h4>John Doe</h4>
-                        <p>Agente inmobiliario con más de 10 años de experiencia en el mercado.</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="./img/persona.png" alt="Miembro del equipo">
-                        <h4>Jane Smith</h4>
-                        <p>Especialista en ventas y atención al cliente, comprometida con la satisfacción total.</p>
-                    </div>
-                </div>
+                <h3>${data.about.team.title}</h3>
+                <p>${data.about.team.content}</p>
+                <div class="team-members"></div>
             </section>
     
             <section id="why-choose-us">
-                <h3>¿Por qué Elegirnos?</h3>
+                <h3>${data.about.whyChooseUs.title}</h3>
                 <ul>
-                    <li>Amplia experiencia en el mercado inmobiliario.</li>
-                    <li>Compromiso con la satisfacción del cliente.</li>
-                    <li>Variedad de propiedades para todos los gustos y presupuestos.</li>
-                    <li>Transparencia y profesionalismo en cada transacción.</li>
+                    ${data.about.whyChooseUs.reasons.map(reason => `<li>${reason}</li>`).join('')}
                 </ul>
             </section>
-    
-            
         `;
     
         app.appendChild(container);
+
+        const teamMembersContainer = container.querySelector('.team-members');
+        const images = await loadImages(data.about.team.members);
+        teamMembersContainer.innerHTML = images;
+
+        // Animación con anime.js
+        const teamMembers = teamMembersContainer.querySelectorAll('.team-member');
+        anime({
+            targets: teamMembers,
+            opacity: [0, 1],
+            translateY: [20, 0],
+            delay: anime.stagger(100),
+            easing: 'easeInOutQuad'
+        });
+
+    } catch (error) {
+        console.error("Error fetching data: ", error);
     }
+}
+
+
 
 
 

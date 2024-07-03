@@ -1,0 +1,222 @@
+[
+    {
+        "id": 1,
+        "name": "Casa en la playa",
+        "price": 300000,
+        "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fGJlYWNoJTIwaG91c2V8ZW58MHx8fHwxNjEyODU2NjUx&ixlib=rb-1.2.1&q=80&w=400"
+    },
+    {
+        "id": 2,
+        "name": "Casa en la ciudad",
+        "price": 500000,
+        "image": "https://a0.muscache.com/im/pictures/hosting/Hosting-18095439/original/4eea5c77-d404-47aa-9f70-0c315659e9b4.jpeg?im_w=1200"
+    },
+    {
+        "id": 3,
+        "name": "Casa en el campo",
+        "price": 200000,
+        "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fGZpZWxkfGVufDB8fHx8MTYxMjg1Njg0NA&ixlib=rb-1.2.1&q=80&w=400"
+    },
+    { 
+        "id": 6, 
+        "name": "Casa rústica",
+        "price": 350000, 
+        "image": "https://a0.muscache.com/im/pictures/hosting/Hosting-1055292733238240562/original/4f1d8e18-72c8-4b0f-9821-1da87742c724.jpeg?im_w=1200"  
+    },
+    {   "id": 8, 
+        "name": "Casa en el lago", 
+        "price": 600000, 
+        "image": "https://a0.muscache.com/im/pictures/e7e9e1c5-c125-48d4-9814-10bc1f373150.jpg?im_w=720" }
+    ,
+    { 
+        "id": 7, 
+        "name": "Casa en la montaña",
+        "price": 400000, 
+        "image": "https://www.elmueble.com/medio/2022/02/25/00533682_490e00f6_2000x1328.jpg"  
+    }
+    ,
+    {   "id": 9, 
+        "name": "Casa en el desierto", 
+        "price": 500000, 
+        "image": "https://a0.muscache.com/im/pictures/prohost-api/Hosting-792714990290805676/original/cfa0ed06-25c5-4f41-995f-df5d0596f48b.jpeg?im_w=1200" 
+    },
+    {   "id": 10,
+        "name": "Casa colonial", 
+        "price": 550000, 
+        "image": "https://a0.muscache.com/im/pictures/miso/Hosting-43403945/original/02fd85af-475d-44d8-a585-c1cc9b02df7a.jpeg?im_w=1200" 
+    },
+    {
+        "id": 11, 
+        "name": "Casa pequeña", 
+        "price": 19500, 
+        "image": "https://a0.muscache.com/im/pictures/18ad9dfa-cc1a-4a0f-81d6-572e68368c91.jpg?im_w=1200"
+    },
+    {
+        "id": 12, 
+        "name": "Casa con jardín", 
+        "price": 40300, 
+        "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDI1fHxob3VzZSUyMGdhcmRlbmV8ZW58MHx8fHwxNjEyODU3ODY4&ixlib=rb-1.2.1&q=80&w=400"
+    },
+    {
+        "id": 13,
+        "name": "Casa en mar del plata", 
+        "price": 300000, 
+        "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fGJlYWNoJTIwaG91c2V8ZW58MHx8fHwxNjEyODU2NjUx&ixlib=rb-1.2.1&q=80&w=400"
+    },
+    {
+        "id": 14, 
+        "name": "Casa en la ciudad", 
+        "price": 500000, 
+        "image": "https://a0.muscache.com/im/pictures/hosting/Hosting-18095439/original/4eea5c77-d404-47aa-9f70-0c315659e9b4.jpeg?im_w=1200"
+    },
+    {
+        "id": 15, 
+        "name": "Casa en el pastizal", 
+        "price": 200000, 
+        "image": "https://imgs.nestimg.com/casa_en_lo_barnechea_1960086650448138986.jpg" 
+       
+    }
+    ,{
+        "id": 16, 
+        "name": "Casa moderna", 
+        "price": 450000, 
+        "image": "https://a0.muscache.com/im/pictures/miso/Hosting-1126848122961632696/original/839bcea3-2a06-4309-b604-b00da160420e.jpeg?im_w=1200"
+       
+    }
+    ,{
+        "id": 17, 
+        "name": "Casa de lujo", 
+        "price": 750000, 
+        "image": "https://a0.muscache.com/im/pictures/a04eda8a-1915-48be-8d7c-041c9158afa8.jpg?im_w=1200"
+        
+    }
+    ,{
+        "id": 18, 
+        "name": "Casa con piedras", 
+        "price": 350000, 
+        "image": "https://designboom.es/wp-content/uploads/2023/01/casa-piedra-trebucq-sirena-gonzalo-viramonte-argentina-designboom-01.jpg"
+        
+    }
+    ,{
+        "id": 19, 
+        "name": "Casa en la montaña", 
+        "price": 400000, 
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwIKOpvOU4Jhlamv9e7zwx0PhN9jbZrzL7JA&s"
+        
+    },
+    {
+        "id": 20, 
+        "name": "Casa en el lago", 
+        "price": 600000, 
+        "image": "https://a0.muscache.com/im/pictures/e7e9e1c5-c125-48d4-9814-10bc1f373150.jpg?im_w=720"
+        
+    },
+    {
+        "id": 21, 
+        "name": "Casa en el rio", 
+        "price": 500000, 
+        "image": "https://arquitecturaideal.com/wp-content/uploads/2015/09/casa-sobre-el-rio-danubio-en-budapest-1.jpg" 
+       
+    }
+    ,{
+        "id": 22, 
+        "name": "Casa en la nieve", 
+        "price": 550000, 
+        "image": "https://www.shutterstock.com/image-illustration/3d-rendering-modern-cozy-chalet-600nw-2061923591.jpg" 
+        
+    },
+    {
+        "id": 23, 
+        "name": "Monoambiente", 
+        "price": 19500, 
+        "image": "https://images.homify.com/v1548695799/p/photo/image/2890874/4-Andr%C3%A9a_11_1.jpg"
+       
+    },
+    {
+        "id": 25, 
+        "name": "Casa con patio", 
+        "price": 40300, 
+        "image": "https://content.arquitecturaydiseno.es/medio/2023/03/22/patio-de-la-casa-fotos-lara-swimmer_6936a3ec_230322200658_1280x794.jpg" 
+    },
+    
+    {
+        "id": 26,
+        "name": "Casa en el bosque",
+        "price": 450000,
+        "image": "https://images.adsttc.com/media/images/61ca/2e16/b038/0601/6505/32e8/large_jpg/casa-bosque-jardin.jpg?1640640053"
+    },
+    {
+        "id": 27,
+        "name": "Casa en la costa",
+        "price": 320000,
+        "image": "https://static.tokkobroker.com/pictures/18689780170988620124221406608436942355996857177808063670806066948704253860864.jpg"
+    },
+    {
+        "id": 28,
+        "name": "Casa urbana",
+        "price": 525000,
+        "image": "https://i.pinimg.com/550x/39/2e/57/392e572e7474a52f85f7a3d721997da6.jpg"
+    },
+    {
+        "id": 29,
+        "name": "Casa moderna de lujo",
+        "price": 800000,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSK3zlXv3tvaYIDaqIAaMK3LA43NC21aEy-A&s"
+    },
+    {
+        "id": 30,
+        "name": "Casa en la selva",
+        "price": 290000,
+        "image": "https://images.adsttc.com/media/images/5a09/9141/b22e/3824/ce00/0422/large_jpg/feature_image.jpg?1510576440"
+    },
+    {
+        "id": 31,
+        "name": "Casa moderna con piscina",
+        "price": 700000,
+        "image": "https://img.freepik.com/fotos-premium/casa-moderna-piscina-vista-al-jardin_865967-3242.jpg"
+    },
+    {
+        "id": 32,
+        "name": "Casa antigua renovada",
+        "price": 450000,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJYXaBDy4qz4hoPhMHXUQBlkfBrT-9RebxDQ&s"
+    },
+    {
+        "id": 33,
+        "name": "Casa minimalista",
+        "price": 520000,
+        "image": "https://i.ytimg.com/vi/k61RIwYTkRM/maxresdefault.jpg"
+    }
+    ,
+    {
+        "id": 34,
+        "name": "Casa en el acantilado",
+        "price": 800000,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9vS1HmZnDumspi6ractrBoPmqBe370PTXYQ&s"
+    },
+    {
+        "id": 35,
+        "name": "Casa ecológica",
+        "price": 480000,
+        "image": "https://estaticos-cdn.prensaiberica.es/clip/af46f378-76ca-4ea0-8e31-e90191e8d50f_16-9-aspect-ratio_default_0.jpg"
+    },
+    {
+        "id": 36,
+        "name": "Casa con terraza",
+        "price": 600000,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDl1zhCG8uxButNxa0cgMLuJNes2Cyo--EXg&s"
+    }
+    
+    
+   
+
+    
+]
+
+
+   
+  
+
+
+   
+

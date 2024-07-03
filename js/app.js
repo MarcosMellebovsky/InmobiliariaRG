@@ -240,15 +240,26 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItemsContainer.className = 'cart-items';
     
             cart.forEach(item => {
-                total += item.price;
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
     
                 const card = document.createElement('div');
                 card.className = 'card cart-card';
     
+                const imageContainer = document.createElement('div');
+                imageContainer.className = 'image-container';
+    
                 const image = document.createElement('img');
                 image.src = item.image;
                 image.alt = item.name;
-                card.appendChild(image);
+                imageContainer.appendChild(image);
+    
+                const quantityBadge = document.createElement('div');
+                quantityBadge.className = 'quantity-badge';
+                quantityBadge.textContent = item.quantity;
+                imageContainer.appendChild(quantityBadge);
+    
+                card.appendChild(imageContainer);
     
                 const details = document.createElement('div');
                 details.className = 'card-details';
@@ -257,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 itemName.textContent = item.name;
     
                 const itemPrice = document.createElement('p');
-                itemPrice.textContent = `Precio: $${item.price}`;
+                itemPrice.textContent = `Precio: $${itemTotal}`;
     
                 const removeButton = document.createElement('button');
                 removeButton.textContent = 'Eliminar del carrito';
@@ -290,14 +301,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const totalText = document.createElement('p');
             totalText.className = 'cart-p';
             totalText.textContent = `Total a pagar: $${total}`;
-    
+
+            const divContenedorBtns = document.createElement('div');
+            divContenedorBtns.className = 'div-btns-contenedor';
+
             const pagarButton = document.createElement('button');
             pagarButton.textContent = 'Pagar';
             pagarButton.className = 'btn-pagar btn-success';
             pagarButton.addEventListener('click', () => handlePagar(cart));
     
+            const emptyCartButton = document.createElement('button');
+            emptyCartButton.textContent = 'Eliminar todo';
+            emptyCartButton.className = 'btn-empty-cart btn-danger';
+            emptyCartButton.addEventListener('click', emptyCart);
+    
             totalContainer.appendChild(totalText);
-            totalContainer.appendChild(pagarButton);
+            totalContainer.appendChild(divContenedorBtns);
+            divContenedorBtns.appendChild(pagarButton)
+        
+            divContenedorBtns.appendChild(emptyCartButton);
     
             container.appendChild(cartItemsContainer);
             container.appendChild(totalContainer);
@@ -305,8 +327,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
         app.appendChild(container);
     }
+    
     function handlePagar(houses) {
-        let title = `¡Estas seguro de comprar ${houses.length} casa${houses.length > 1 ? 's' : ''}!`;
+        const totalHouses = houses.reduce((sum, house) => sum + house.quantity, 0);
+        let title = `¡Estas seguro de comprar ${totalHouses} casa${totalHouses > 1 ? 's' : ''}!`;
     
         Swal.fire({
             title: title,
@@ -324,8 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (result.isConfirmed) {
                 localStorage.removeItem('cart');
     
-                const houseNames = houses.map(house => house.name).join(", ");
-                
+                const houseNames = houses.map(house => `${house.name} (x${house.quantity})`).join(", ");
     
                 Swal.fire({
                     title: "¡Comprado!",
@@ -344,26 +367,55 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
+    function emptyCart() {
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: "¡No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, eliminar todo!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('cart');
+                Swal.fire({
+                    title: "¡Eliminado!",
+                    text: "Tu carrito está vacío.",
+                    icon: "success"
+                });
+                renderCart();
+            }
+        });
+    }
+    
+    
     
     function addToCart(house) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(house);
+        const existingItemIndex = cart.findIndex(item => item.id === house.id);
+    
+        if (existingItemIndex !== -1) {
+            cart[existingItemIndex].quantity += 1;
+        } else {
+            house.quantity = 1;
+            cart.push(house);
+        }
+    
         localStorage.setItem('cart', JSON.stringify(cart));
         Swal.fire({
-            title: `${house.name} 
-            se agrego al carrito!`,
+            title: `${house.name} se agregó al carrito!`,
             icon: 'success',
             confirmButtonText: 'Volver',
-            footer: '<span class="rojo"> Esta  informacion es importante!</span>',
+            footer: '<span class="rojo">Esta información es importante!</span>',
             timer: 10000,
             timerProgressBar: true,
             allowOutsideClick: false,
             allowEscapeKey: true,
             allowEnterKey: true,
             stopKeydownPropagation: false,
-            
         });
-     
     }
     
 
@@ -484,23 +536,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function removeFromCart(house) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart = cart.filter(item => item.id !== house.id);
+        const existingItemIndex = cart.findIndex(item => item.id === house.id);
+    
+        if (existingItemIndex !== -1) {
+            if (cart[existingItemIndex].quantity > 1) {
+                cart[existingItemIndex].quantity -= 1;
+            } else {
+                cart.splice(existingItemIndex, 1);
+            }
+        }
+    
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
-        
+    
         Swal.fire({
-            title: `${house.name} 
-            se elimino al carrito!`,
+            title: `${house.name} se eliminó del carrito!`,
             icon: 'error',
             confirmButtonText: 'Volver',
-            footer: '<span class="rojo"> Esta  informacion es importante!</span>',
+            footer: '<span class="rojo">Esta información es importante!</span>',
             timer: 10000,
             timerProgressBar: true,
             allowOutsideClick: false,
             allowEscapeKey: true,
             allowEnterKey: true,
             stopKeydownPropagation: false,
-            
         });
     }
 

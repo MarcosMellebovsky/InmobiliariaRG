@@ -204,6 +204,7 @@ nav {
     object-fit: cover;
 }
 
+
 .card-body {
     padding: 20px;
     text-align: center;
@@ -255,7 +256,14 @@ nav {
 .botonn:hover {
     background-color: #0056b3;
 }
+.btn-disabled {
+  background-color: #cccccc; /* Color de fondo más gris */
+  cursor: not-allowed; /* Cambia el cursor a no permitido */
+}
 
+.btn-disabled:hover{
+  background-color: #9acbff
+}
 
 
 

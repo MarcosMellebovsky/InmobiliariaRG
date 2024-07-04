@@ -179,19 +179,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = `
-                    <img src="${house.image}" alt="${house.name}">
-                    <h3 class="h3-card">${house.name}</h3>
-                    <p class="p-card">Precio: $${house.price}</p>
-    
-                    <div class="boton-div">
-                        <button data-id="${house.id}" class="btn btn-primary botonn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-                            </svg>
-                            Agregar al carrito
-                        </button>
-                    </div>
-                `;
+                        <img src="${house.image}" alt="${house.name}">
+                        <h3 class="h3-card">${house.name}</h3>
+                        <p class="p-card">Precio: $${house.price}</p>
+
+                        <div class="boton-div">
+                            <button data-id="${house.id}" class="btn btn-primary botonn ${house.quantity >= 3 ? 'btn-disabled' : ''}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                                </svg>
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    `;
                 card.querySelector('button').addEventListener('click', () => addToCart(house));
                 container.appendChild(card);
             });
@@ -378,13 +378,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const existingItemIndex = cart.findIndex(item => item.id === house.id);
     
         if (existingItemIndex !== -1) {
-            cart[existingItemIndex].quantity += 1;
+            if (cart[existingItemIndex].quantity < 3) {
+                cart[existingItemIndex].quantity += 1;
+                if (cart[existingItemIndex].quantity === 3) {
+                    const addButton = document.querySelector(`button[data-id="${house.id}"]`);
+                    addButton.disabled = true;
+                    addButton.classList.add('btn-disabled'); 
+                }
+            } else {
+                Swal.fire({
+                    title: '¡Máximo alcanzado!',
+                    text: 'No puedes agregar más de 3 casas al carrito.',
+                    icon: 'warning',
+                    confirmButtonText: 'Volver'
+                });
+                return; 
+            }
         } else {
             house.quantity = 1;
             cart.push(house);
         }
     
         localStorage.setItem('cart', JSON.stringify(cart));
+    
         Swal.fire({
             title: `${house.name} se agregó al carrito!`,
             icon: 'success',
@@ -397,7 +413,17 @@ document.addEventListener('DOMContentLoaded', () => {
             allowEnterKey: true,
             stopKeydownPropagation: false,
         });
+    
+        renderCart();
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
 
 
